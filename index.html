@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocabico — Mobile Apps for Small Business</title>
+<meta name="description" content="Ocabico builds simple, powerful Android apps for small businesses. Download A1 Thermal Printer — print receipts from your phone via Bluetooth, WiFi, or USB.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080C10;
+    --surface: #0F1419;
+    --card: #141B23;
+    --border: #1E2A35;
+    --primary: #00E676;
+    --accent: #00B0FF;
+    --amber: #FFB300;
+    --muted: #5C6E7E;
+    --text-low: #8A9BB0;
+    --text-high: #E2EAF4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-high);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-brand {
+    display: flex; align-items: baseline; gap: 8px;
+  }
+
+  .nav-brand .logo {
+    font-size: 20px; font-weight: 900;
+    color: var(--primary);
+    font-family: monospace; letter-spacing: 2px;
+  }
+
+  .nav-brand .sub {
+    font-size: 10px; color: var(--muted);
+    font-weight: 600; letter-spacing: 3px;
+  }
+
+  .nav-links {
+    display: flex; gap: 24px; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px; color: var(--text-low);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-high); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 80px 24px 64px;
+    text-align: center;
+    max-width: 720px; margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,230,118,0.08);
+    border: 1px solid rgba(0,230,118,0.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px; color: var(--primary);
+    font-weight: 600; letter-spacing: 0.5px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 800; line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span { color: var(--primary); }
+
+  .hero p {
+    font-size: 17px; color: var(--text-low);
+    max-width: 520px; margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex; gap: 12px;
+    justify-content: center; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary); color: #080C10;
+    font-weight: 700; font-size: 14px;
+    padding: 12px 24px; border-radius: 12px;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card); color: var(--text-high);
+    font-weight: 600; font-size: 14px;
+    padding: 12px 24px; border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--muted); }
+
+  /* ── Section ── */
+  section { padding: 64px 24px; max-width: 1080px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--muted); letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700; letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    font-size: 15px; color: var(--text-low);
+    max-width: 520px; margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  /* ── App card ── */
+  .app-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .app-card { grid-template-columns: 1fr; }
+  }
+
+  .app-card-badge {
+    display: inline-block;
+    background: rgba(0,230,118,0.10);
+    border: 1px solid rgba(0,230,118,0.2);
+    color: var(--primary);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 6px;
+    margin-bottom: 16px;
+  }
+
+  .app-card h3 {
+    font-size: 26px; font-weight: 800;
+    letter-spacing: -0.5px; margin-bottom: 8px;
+  }
+
+  .app-card p {
+    font-size: 14px; color: var(--text-low);
+    line-height: 1.7; margin-bottom: 20px;
+  }
+
+  .feature-list {
+    list-style: none; margin-bottom: 24px;
+  }
+
+  .feature-list li {
+    font-size: 13px; color: var(--text-low);
+    padding: 5px 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    color: var(--primary);
+    font-weight: 700; font-size: 12px;
+    width: 16px; flex-shrink: 0;
+  }
+
+  /* Connection types */
+  .conn-types {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+
+  .conn-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .conn-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  .conn-tile h4 {
+    font-size: 13px; font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .conn-tile p {
+    font-size: 12px; color: var(--muted);
+    margin: 0; line-height: 1.4;
+  }
+
+  /* ── Features grid ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .feature-card .icon {
+    font-size: 22px; margin-bottom: 10px;
+  }
+
+  .feature-card h4 {
+    font-size: 14px; font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .feature-card p {
+    font-size: 12px; color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── Privacy section ── */
+  .privacy-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px;
+  }
+
+  .privacy-inner {
+    max-width: 720px; margin: 0 auto;
+  }
+
+  .privacy-links {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .privacy-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 13px; color: var(--text-low);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .privacy-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .about-stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .about-stat .number {
+    font-size: 28px; font-weight: 800;
+    color: var(--primary); letter-spacing: -1px;
+  }
+
+  .about-stat .label {
+    font-size: 12px; color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── Contact ── */
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+
+  .contact-card h3 {
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .contact-card p {
+    font-size: 13px; color: var(--text-low);
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 720px; margin: 0 auto;
+  }
+
+  .footer-brand {
+    font-size: 18px; font-weight: 900;
+    color: var(--primary); font-family: monospace;
+    letter-spacing: 2px; margin-bottom: 8px;
+  }
+
+  .footer-links {
+    display: flex; gap: 20px;
+    justify-content: center; flex-wrap: wrap;
+    margin: 16px 0;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px; color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text-high); }
+
+  .footer-copy {
+    font-size: 12px; color: var(--muted);
+  }
+
+  /* ── Divider ── */
+  hr { border: none; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-brand">
+    <span class="logo">OCABICO</span>
+    <span class="sub">APPS</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">🇮🇳 Made in India</div>
+  <h1>Simple apps for <span>real businesses</span></h1>
+  <p>We build powerful, easy-to-use Android apps that help small business owners work smarter — without expensive hardware or complicated software.</p>
+  <div class="hero-actions">
+    <a href="https://play.google.com/store/apps/details?id=com.ocabico.aonethermalprinter" class="btn-primary" target="_blank">
+      🖨️ Download A1 Thermal Printer
+    </a>
+    <a href="#contact" class="btn-secondary">Contact Us</a>
+  </div>
+</div>
+
+<!-- Apps -->
+<section id="apps">
+  <div class="section-label">OUR APPS</div>
+  <div class="section-title">A1 Thermal Printer</div>
+  <p class="section-sub">Turn your Android phone into a complete mobile point-of-sale system. No PC required.</p>
+
+  <div class="app-card">
+    <div>
+      <div class="app-card-badge">AVAILABLE ON GOOGLE PLAY</div>
+      <h3>A1 Thermal Printer</h3>
+      <p>Connect to any thermal printer via Bluetooth, WiFi, or USB and start printing professional receipts instantly. Built for retailers, cafes, restaurants, and vendors.</p>
+      <ul class="feature-list">
+        <li>Print receipts, images, barcodes & QR codes</li>
+        <li>Receipt builder with live preview</li>
+        <li>Daily sales reports & revenue tracking</li>
+        <li>Receipt history & PDF export</li>
+        <li>Works offline — no internet needed to print</li>
+        <li>Supports ESC/POS & Star Micronics printers</li>
+      </ul>
+      <a href="https://play.google.com/store/apps/details?id=com.ocabico.aonethermalprinter" class="btn-primary" target="_blank">
+        Download Free
+      </a>
+    </div>
+
+    <div class="conn-types">
+      <div class="conn-tile">
+        <div class="conn-icon" style="background:rgba(0,176,255,0.12);">📶</div>
+        <div>
+          <h4>Bluetooth</h4>
+          <p>Pair once, print wirelessly from anywhere in the room</p>
+        </div>
+      </div>
+      <div class="conn-tile">
+        <div class="conn-icon" style="background:rgba(0,230,118,0.12);">🌐</div>
+        <div>
+          <h4>WiFi / LAN</h4>
+          <p>Connect over your shop network — fast and reliable</p>
+        </div>
+      </div>
+      <div class="conn-tile">
+        <div class="conn-icon" style="background:rgba(179,136,255,0.12);">🔌</div>
+        <div>
+          <h4>USB (OTG)</h4>
+          <p>Plug in and print instantly — no setup required</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- Features -->
+<section id="features">
+  <div class="section-label">WHAT YOU GET</div>
+  <div class="section-title">Everything your business needs</div>
+  <p class="section-sub">From receipt printing to sales tracking — all in one free app.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="icon">🧾</div>
+      <h4>Receipt Builder</h4>
+      <p>Design custom receipts with your shop name, logo, items, taxes, and discounts.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📊</div>
+      <h4>Sales Reports</h4>
+      <p>Track daily revenue, order count, and average order value at a glance.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📜</div>
+      <h4>Receipt History</h4>
+      <p>Every receipt saved automatically. Search, reprint, or share any past order.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📄</div>
+      <h4>PDF Export</h4>
+      <p>Generate and share sales reports as PDF files — perfect for accountants.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🖼️</div>
+      <h4>Image Printing</h4>
+      <p>Print any image from your gallery — logos, product photos, and more.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📦</div>
+      <h4>Barcode & QR</h4>
+      <p>Generate and print barcodes and QR codes for your products instantly.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🧪</div>
+      <h4>Test Print</h4>
+      <p>Verify your printer connection instantly with a one-tap test print.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📱</div>
+      <h4>Works Offline</h4>
+      <p>No internet needed to print. Everything works locally on your device.</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- Privacy -->
+<div class="privacy-section" id="privacy">
+  <div class="privacy-inner">
+    <div class="section-label">PRIVACY & LEGAL</div>
+    <div class="section-title">Your privacy matters</div>
+    <p style="font-size:15px; color:var(--text-low); line-height:1.7; margin-top:8px;">
+      We are committed to protecting your personal information. Our apps are designed with privacy in mind — we collect only what is necessary to provide the service, and we never sell your data.
+    </p>
+    <div class="privacy-links">
+      <a href="https://sites.google.com/view/privacypolicya1thermalprinter/home"
+         class="privacy-link" target="_blank">
+        🛡️ A1 Thermal Printer — Privacy Policy
+      </a>
+      <a href="mailto:ocabicoitservices@gmail.com" class="privacy-link">
+        ✉️ Privacy Requests
+      </a>
+    </div>
+    <p style="font-size:12px; color:var(--muted); margin-top:20px;">
+      For data access, deletion, or any privacy-related requests, contact us at
+      <a href="mailto:ocabicoitservices@gmail.com"
+         style="color:var(--accent);">ocabicoitservices@gmail.com</a>.
+      We respond within 30 days.
+    </p>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label">ABOUT OCABICO</div>
+  <div class="section-title">Built for Indian small businesses</div>
+  <p class="section-sub">
+    Ocabico is an indie app studio based in Nashik, Maharashtra. We build focused, no-nonsense tools that solve real problems for small business owners across India.
+  </p>
+  <div class="about-grid">
+    <div class="about-stat">
+      <div class="number">3+</div>
+      <div class="label">Connection types supported</div>
+    </div>
+    <div class="about-stat">
+      <div class="number">Free</div>
+      <div class="label">To download & use</div>
+    </div>
+    <div class="about-stat">
+      <div class="number">24/7</div>
+      <div class="label">Works offline, anytime</div>
+    </div>
+    <div class="about-stat">
+      <div class="number">🇮🇳</div>
+      <div class="label">Made in Nashik, India</div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-card">
+    <div>
+      <h3>Get in touch</h3>
+      <p>Questions, feedback, or support? We'd love to hear from you.</p>
+      <p style="margin-top:8px; color:var(--accent); font-size:13px;">
+        ocabicoitservices@gmail.com
+      </p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <a href="mailto:ocabicoitservices@gmail.com" class="btn-primary">
+        ✉️ Send Email
+      </a>
+      <a href="https://www.instagram.com/a1ocabico" class="btn-secondary" target="_blank">
+        📸 @a1ocabico
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">OCABICO</div>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:4px;">
+      Simple apps for real businesses
+    </p>
+    <ul class="footer-links">
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#features">Features</a></li>
+      <li>
+        <a href="https://sites.google.com/view/privacypolicya1thermalprinter/home"
+           target="_blank">Privacy Policy</a>
+      </li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <a href="https://play.google.com/store/apps/details?id=com.ocabico.aonethermalprinter"
+           target="_blank">Play Store</a>
+      </li>
+    </ul>
+    <p class="footer-copy">
+      © 2026 Ocabico · Nashik, Maharashtra, India ·
+      Made with ❤️ by Aman Yadav
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
