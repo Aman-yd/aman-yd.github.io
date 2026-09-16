@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "updated_at": "2026-09-16",
+  "products": [
+    {
+      "id": "printer_001",
+      "name": "80mm Thermal Receipt Printer",
+      "short_description": "Bluetooth + USB thermal receipt printer",
+      "image": "https://example.com/printer.jpg",
+
+      "category": "thermal_printer",
+      "paper_width": "80mm",
+
+      "connections": [
+        "bluetooth",
+        "usb"
+      ],
+
+      "compatible_with_a1": true,
+      "recommended": true,
+      "active": true,
+
+      "offers": [
+        {
+          "country": "IN",
+          "store": "amazon",
+          "affiliate_url": "https://link.amazon/B0htclmZ5"
+        }
+      ]
+    }
+  ]
+}
