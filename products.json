@@ -1,26 +1,84 @@
 {
   "version": 1,
   "updated_at": "2026-09-16",
+
   "products": [
     {
-      "id": "printer_001",
-      "name": "80mm Thermal Receipt Printer",
-      "short_description": "Fast thermal receipt printer for shops and POS billing.",
-      "image": "",
-      "category": "80mm",
-      "paper_width": "80mm",
+      "id": "posiflow_58mm",
+      "name": "POSiFLOW 58mm Bluetooth Thermal Printer",
+      "short_description": "Compact 58mm thermal receipt printer suitable for billing, POS and receipt printing.",
+      "image": "https://aman-yd.github.io/product_images/POSiFLOW_58mm.png",
+
+      "category": "58mm",
+      "paper_width": "58mm",
+
       "connections": [
         "bluetooth",
         "usb"
       ],
+
       "compatible_with_a1": true,
       "recommended": true,
       "active": true,
+
       "offers": [
         {
           "country": "IN",
           "store": "amazon",
-          "affiliate_url": "https://link.amazon/B0htclmZ5"
+          "affiliate_url": "https://link.amazon/B01hXwqLG"
+        }
+      ]
+    },
+
+    {
+      "id": "star_tsp143iiilan",
+      "name": "Star Micronics TSP143IIILAN Thermal Printer",
+      "short_description": "Professional 80mm LAN thermal receipt printer for POS counters, restaurants and retail businesses.",
+      "image": "https://aman-yd.github.io/product_images/star_thermal_printer_80mm.png",
+
+      "category": "80mm",
+      "paper_width": "80mm",
+
+      "connections": [
+        "lan"
+      ],
+
+      "compatible_with_a1": true,
+      "recommended": true,
+      "active": true,
+
+      "offers": [
+        {
+          "country": "IN",
+          "store": "amazon",
+          "affiliate_url": "https://link.amazon/B015eygdc"
+        }
+      ]
+    },
+
+    {
+      "id": "epson_tmt82xii",
+      "name": "Epson TM-T82X II 80mm Thermal Receipt Printer",
+      "short_description": "Business-grade 80mm thermal receipt printer designed for reliable POS and billing environments.",
+      "image": "https://aman-yd.github.io/product_images/epson_80mm.png",
+
+      "category": "80mm",
+      "paper_width": "80mm",
+
+      "connections": [
+        "usb",
+        "lan"
+      ],
+
+      "compatible_with_a1": true,
+      "recommended": true,
+      "active": true,
+
+      "offers": [
+        {
+          "country": "IN",
+          "store": "amazon",
+          "affiliate_url": "https://link.amazon/B09K7EKrJ"
         }
       ]
     }
