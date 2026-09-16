@@ -5,21 +5,17 @@
     {
       "id": "printer_001",
       "name": "80mm Thermal Receipt Printer",
-      "short_description": "Bluetooth + USB thermal receipt printer",
-      "image": "https://example.com/printer.jpg",
-
-      "category": "thermal_printer",
+      "short_description": "Fast thermal receipt printer for shops and POS billing.",
+      "image": "",
+      "category": "80mm",
       "paper_width": "80mm",
-
       "connections": [
         "bluetooth",
         "usb"
       ],
-
       "compatible_with_a1": true,
       "recommended": true,
       "active": true,
-
       "offers": [
         {
           "country": "IN",
